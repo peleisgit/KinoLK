@@ -22,12 +22,18 @@ namespace KinoLK.Administrator
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            connection.GetDataGridView("SELECT data AS 'Data', koszty AS 'Koszty' FROM mydb.bilans_rachunku;", DGVcost);
+
+            connection.GetDataGridView("SELECT data AS 'Data', koszty AS 'Koszty' FROM mydb.bilans_rachunku where data=Convert('"+dateTimePicker1.Value.ToString("yyyy-MM-dd")+"',date);", DGVcost);
         }
 
         private void Report_Cost_Load(object sender, EventArgs e)
         {
             connection.GetDataGridView("SELECT data AS 'Data', koszty AS 'Koszty' FROM mydb.bilans_rachunku;", DGVcost);
+        }
+
+        private void DGVcost_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

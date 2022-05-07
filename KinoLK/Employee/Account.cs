@@ -55,17 +55,18 @@ namespace KinoLK.Employee
             LabelRate.Text = rate.ToString() + "zł";
             LabelTotalWorktime.Text = totalWorktime.ToString();
             LabelSalary.Text = Math.Round(salary, 2).ToString() + "zł";
-        
-
-
-
         }
 
-        
+        internal User User { get => user; set => user = value; }
 
         private void Account_Load(object sender, EventArgs e)
         {
             connection.GetDataGridView("SELECT czas AS 'Czas zalogowania', data_dodania_godzin_pracy AS 'Data' FROM mydb.godziny_pracy WHERE Uzytkownik_idUser = '" + id_user + "';", DGVlogs);
+        }
+
+        private void DGVlogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

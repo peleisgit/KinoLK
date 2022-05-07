@@ -7,6 +7,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using KinoLK.Class;
+using System.Globalization;
 
 namespace KinoLK
 {
@@ -206,7 +207,12 @@ namespace KinoLK
 
         public void SendCost(string currentData, double dailyWage)
         {
-            MySqlCommand connectionDendIncome = new MySqlCommand("INSERT INTO `mydb`.`bilans_rachunku` (`czas`, `koszty`) VALUES('" + currentData + "','" + dailyWage + "'); ", connectionDB);          
+            decimal dailyWageDecimal = Convert.ToDecimal(dailyWage);
+            decimal dailyWageRounded = Math.Round(dailyWageDecimal, 2);
+          
+
+
+            MySqlCommand connectionDendIncome = new MySqlCommand("INSERT INTO `mydb`.`bilans_rachunku` (`data`, `koszty`) VALUES('" + currentData + "','" + dailyWageRounded.ToString().Replace(',', '.') + "'); ", connectionDB);          
 
             OpenConnection();
             connectionDendIncome.ExecuteNonQuery();
@@ -365,6 +371,143 @@ namespace KinoLK
                 CloseConnection();
             }
         }
+              
+
+        public List<string> GetMoviesToDashboard(string date)
+        {
+            List<string> movies = new List<string>();
+            MySqlDataReader dr;
+            MySqlCommand connectionGetMoviesToCombobox = new MySqlCommand("SELECT mydb.filmy.nazwa_filmu as 'film' FROM mydb.seanse inner join mydb.filmy on mydb.seanse.Filmy_idFilmu=mydb.filmy.idFilmu where mydb.seanse.data='" + date + "';", connectionDB);
+           
+
+            OpenConnection();
+            dr = connectionGetMoviesToCombobox.ExecuteReader();
+
+            while (dr.Read())
+            {
+                movies.Add(dr["film"].ToString());
+            }
+
+            
+            CloseConnection();
+
+            return movies;
+        }
+
+        public List<string> GetHoursMovieToDashbord(string movies,string date)
+        {
+            List<string> hours = new List<string>();
+            MySqlDataReader dr;
+            MySqlCommand connectionGetHoursMovieToDashbord = new MySqlCommand("SELECT mydb.seanse.godzina as 'godzina' FROM mydb.seanse inner join mydb.filmy on mydb.seanse.Filmy_idFilmu=mydb.filmy.idFilmu where mydb.seanse.data='" + date + "' and mydb.filmy.nazwa_filmu='"+movies+"';", connectionDB);
+
+
+            OpenConnection();
+            dr = connectionGetHoursMovieToDashbord.ExecuteReader();
+
+            while (dr.Read())
+            {
+                hours.Add(dr["godzina"].ToString());
+            }
+
+            CloseConnection();
+
+            return hours;
+        }
+
+
+        public string getInfoAboutMovie(string movie, string snapshot)
+        {
+            string category = "";
+            MySqlCommand getInfoAboutMovie = new MySqlCommand("SELECT " + snapshot + " FROM mydb.filmy WHERE nazwa_filmu='" + movie + "';", connectionDB);
+            MySqlDataReader dr;
+
+
+            OpenConnection();
+            dr = getInfoAboutMovie.ExecuteReader();
+
+            if (dr.Read())
+            {
+                category = dr[snapshot].ToString();
+            }
+
+
+            dr.Close();
+            CloseConnection();
+
+            return category;
+        }
+
+        public List<string> GetInfoAboutHalls(string movie, string hour, string day)
+        {
+            List<string> halls = new List<string>();
+            MySqlCommand getInfoAboutHalls = new MySqlCommand("SELECT nazwa_sali FROM mydb.sala INNER JOIN mydb.seanse ON sala.idSali=seanse.Sala_idSali INNER JOIN mydb.filmy ON mydb.seanse.Filmy_idFilmu=filmy.idFilmu WHERE seanse.data='" + day + "' AND seanse.godzina='" + hour + "' AND filmy.nazwa_filmu='" + movie + "';", connectionDB);
+
+            MySqlDataReader dr;
+
+
+            OpenConnection();
+            dr = getInfoAboutHalls.ExecuteReader();
+
+            if (dr.Read())
+            {
+                halls.Add(dr["nazwa_sali"].ToString());
+            }
+
+
+            dr.Close();
+            CloseConnection();
+
+            return halls;
+        }
+
+        public List<int> GetIdsSeans(string movie, string hall, string day, string hour)
+        {
+            List<int> ids = new List<int>();
+            MySqlCommand getIdsSeans = new MySqlCommand("SELECT idSali, idFilmu, idSeansu FROM mydb.seanse INNER JOIN mydb.filmy ON seanse.Filmy_idFilmu=filmy.idFilmu INNER JOIN sala ON seanse.Sala_idSali=sala.idSali WHERE filmy.nazwa_filmu='" + movie + "' AND sala.nazwa_sali='" + hall + "' AND seanse.data='" + day + "' AND seanse.godzina='" + hour + "'", connectionDB);
+
+            MySqlDataReader dr;
+            OpenConnection();
+
+            dr = getIdsSeans.ExecuteReader();
+
+            if (dr.Read())
+            {
+                 ids.Add((int)dr["idSeansu"]);
+                 ids.Add((int)dr["idSali"]);
+                 ids.Add((int)dr["idFilmu"]);
+                
+            }
+
+
+            CloseConnection();
+
+            return ids;
+        }
+
+
+
+       public void AddTicketsToDB(List<int> ids)
+        {
+            MySqlCommand connectionAddTicketsToDB = new MySqlCommand("INSERT INTO `mydb`.`bilet` (`cena`, `Seanse_idSeansu`, `Seanse_Filmy_idFilmu`, `Seanse_Sala_idSali`) VALUES ('30', '"+ ids[0] + "', '" + ids[2] + "', '" + ids[1] + "');", connectionDB);
+            OpenConnection();
+
+            try
+            {                
+                connectionAddTicketsToDB.ExecuteNonQuery();               
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            CloseConnection();
+
+        }
+
+     
+
+        
+
+
 
     } 
 }

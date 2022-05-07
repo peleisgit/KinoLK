@@ -37,7 +37,6 @@ namespace KinoLK.Administrator
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnAddMovie = new System.Windows.Forms.Button();
-            this.BtnEditMovie = new System.Windows.Forms.Button();
             this.BtnRemovieMovie = new System.Windows.Forms.Button();
             this.TextboxTitle = new System.Windows.Forms.TextBox();
             this.TextboxDirector = new System.Windows.Forms.TextBox();
@@ -127,19 +126,9 @@ namespace KinoLK.Administrator
             this.BtnAddMovie.UseVisualStyleBackColor = true;
             this.BtnAddMovie.Click += new System.EventHandler(this.BtnAddMovie_Click);
             // 
-            // BtnEditMovie
-            // 
-            this.BtnEditMovie.Location = new System.Drawing.Point(622, 386);
-            this.BtnEditMovie.Name = "BtnEditMovie";
-            this.BtnEditMovie.Size = new System.Drawing.Size(162, 23);
-            this.BtnEditMovie.TabIndex = 9;
-            this.BtnEditMovie.Text = "Edytuj";
-            this.BtnEditMovie.UseVisualStyleBackColor = true;
-            this.BtnEditMovie.Click += new System.EventHandler(this.BtnEditMovie_Click);
-            // 
             // BtnRemovieMovie
             // 
-            this.BtnRemovieMovie.Location = new System.Drawing.Point(622, 415);
+            this.BtnRemovieMovie.Location = new System.Drawing.Point(622, 386);
             this.BtnRemovieMovie.Name = "BtnRemovieMovie";
             this.BtnRemovieMovie.Size = new System.Drawing.Size(162, 23);
             this.BtnRemovieMovie.TabIndex = 10;
@@ -164,8 +153,13 @@ namespace KinoLK.Administrator
             // NumerUpDownDuration
             // 
             this.NumerUpDownDuration.Location = new System.Drawing.Point(54, 420);
+            this.NumerUpDownDuration.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.NumerUpDownDuration.Name = "NumerUpDownDuration";
-            this.NumerUpDownDuration.Size = new System.Drawing.Size(120, 20);
+            this.NumerUpDownDuration.Size = new System.Drawing.Size(216, 20);
             this.NumerUpDownDuration.TabIndex = 15;
             // 
             // TextboxSpecies
@@ -178,6 +172,11 @@ namespace KinoLK.Administrator
             // NumerUpDownPurchase
             // 
             this.NumerUpDownPurchase.Location = new System.Drawing.Point(278, 337);
+            this.NumerUpDownPurchase.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.NumerUpDownPurchase.Name = "NumerUpDownPurchase";
             this.NumerUpDownPurchase.Size = new System.Drawing.Size(176, 20);
             this.NumerUpDownPurchase.TabIndex = 18;
@@ -211,7 +210,6 @@ namespace KinoLK.Administrator
             this.Controls.Add(this.TextboxDirector);
             this.Controls.Add(this.TextboxTitle);
             this.Controls.Add(this.BtnRemovieMovie);
-            this.Controls.Add(this.BtnEditMovie);
             this.Controls.Add(this.BtnAddMovie);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -242,7 +240,6 @@ namespace KinoLK.Administrator
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtnAddMovie;
-        private System.Windows.Forms.Button BtnEditMovie;
         private System.Windows.Forms.Button BtnRemovieMovie;
         private System.Windows.Forms.TextBox TextboxTitle;
         private System.Windows.Forms.TextBox TextboxDirector;

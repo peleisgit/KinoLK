@@ -74,7 +74,7 @@ namespace KinoLK.Administrator
                 TextboxDirector.Text = DGVmovies.Rows[e.RowIndex].Cells[3].Value.ToString();
                 TextboxSpecies.Text = DGVmovies.Rows[e.RowIndex].Cells[4].Value.ToString();
                 CheckboxForAdult.Checked = (bool)DGVmovies.Rows[e.RowIndex].Cells[5].Value;
-                NumerUpDownDuration.Value = (decimal)DGVmovies.Rows[e.RowIndex].Cells[6].Value;
+                NumerUpDownDuration.Value = decimal.Parse(DGVmovies.Rows[e.RowIndex].Cells[6].Value.ToString());
                 NumerUpDownPurchase.Value = (decimal)DGVmovies.Rows[e.RowIndex].Cells[7].Value; 
                
             }

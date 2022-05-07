@@ -13,9 +13,7 @@ namespace KinoLK.Employee
 {
     public partial class Dashboard : Form
     {
-        #region variables private  
-        private string selectedMovie ="";
-        private string selectedHours ="";
+        #region variables private        
         private int numberTicket = 0;
         private int numberFood = 0;
         private int numberDrink = 0;       
@@ -33,6 +31,13 @@ namespace KinoLK.Employee
         private static int numberPopcorns = 0;
         private static int numberDrinks = 0;
         public int id_user;
+        ConnectionDB connection = new ConnectionDB();
+
+        private string selectedDay; 
+        private string selectedMovie; 
+        private string selectedHour; 
+        private string selectedHall;
+        private List<int> idForBilet;
 
         public decimal Income { get => income; set => income = value; }
         public int TicketsSold { get => ticketsSold; set => ticketsSold = value; }
@@ -44,6 +49,7 @@ namespace KinoLK.Employee
         {
             InitializeComponent();
             id_user = id;
+            dateTimePicker1.MinDate = DateTime.Today;
           
         }
 
@@ -306,7 +312,11 @@ namespace KinoLK.Employee
             {
                 Income += TotalPrice;
                 NumberTransaction++;
-                Income incomeObject = new Income(Income, TicketsSold, NumberTransaction, NumberPopcorns, NumberDrinks);  
+                Income incomeObject = new Income(Income, TicketsSold, NumberTransaction, NumberPopcorns, NumberDrinks);
+                for(int i=0; i< TicketsSold; i++)
+                {
+                    connection.AddTicketsToDB(idForBilet);
+                }               
                 TotalPrice = 0;
             }
             else
@@ -324,5 +334,87 @@ namespace KinoLK.Employee
         }
 
         #endregion
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            comboBox1.DataSource = null;
+            selectedDay = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            comboBox1.DataSource = connection.GetMoviesToDashboard(selectedDay);
+
+           
+        
+
+    }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            comboBox2.DataSource = null;
+
+            label11.Visible = false;
+            label12.Visible = false;
+
+            if (comboBox1.SelectedValue != null)
+            {
+                selectedMovie = comboBox1.SelectedValue.ToString();
+
+
+                comboBox2.DataSource = connection.GetHoursMovieToDashbord(selectedMovie, selectedDay);
+                label11.Visible = true;
+                label12.Visible = true;
+
+
+                label11.Text = connection.getInfoAboutMovie(comboBox1.SelectedValue.ToString(), "gatunek");
+                label12.Text = connection.getInfoAboutMovie(comboBox1.SelectedValue.ToString(), "dla_pelnoletnich");
+            }
+            
+            
+
+           
+            
+            if(label12.Text == "true")
+            {
+                label12.Text = "Film tylko dla dorosłych";
+            }
+            else
+            {
+                label12.Visible = false;
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedHour = comboBox2.SelectedValue.ToString();
+
+            if(comboBox1.SelectedValue != null && comboBox2.SelectedValue != null)
+            {
+                comboBox3.DataSource = connection.GetInfoAboutHalls(selectedMovie, selectedHour, selectedDay);
+            }
+          
+           
+            
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBox1.SelectedValue != null && comboBox2.SelectedValue != null && comboBox3.SelectedValue != null)
+            {
+
+                selectedHall = comboBox3.SelectedValue.ToString();
+                label10.Visible = true;
+                label10.Text = selectedHall;
+
+                idForBilet = connection.GetIdsSeans(selectedMovie, selectedHall, selectedDay, selectedHour);
+            }
+
+            
+        }
     }
 }

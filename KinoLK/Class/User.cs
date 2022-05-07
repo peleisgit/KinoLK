@@ -21,6 +21,9 @@ namespace KinoLK.Class
 
         }
 
+       
+
+
         public User(int id_user, string login, string password, string name, string lastname, double rate, TimeSpan totalWorktime)
         {
             this.id_user = id_user;

@@ -44,6 +44,7 @@ namespace KinoLK.Administrator
             this.DGVbilans.Name = "DGVbilans";
             this.DGVbilans.Size = new System.Drawing.Size(726, 317);
             this.DGVbilans.TabIndex = 3;
+            this.DGVbilans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVbilans_CellContentClick);
             // 
             // dateTimePicker1
             // 

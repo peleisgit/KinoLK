@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KinoLK.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,7 +36,7 @@ namespace KinoLK
             {
                 int type = connection.CheckTypeUser(id);
                 if (type == 0)
-                {
+                {                   
                     Employee.Employee_main_panel employee = new Employee.Employee_main_panel(id);
                     ActiveForm.Hide();
                     employee.Show();

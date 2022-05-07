@@ -36,7 +36,7 @@ namespace KinoLK.Administrator
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(50, 88);
+            this.dateTimePicker1.Location = new System.Drawing.Point(50, 74);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(189, 20);
             this.dateTimePicker1.TabIndex = 0;
@@ -52,6 +52,7 @@ namespace KinoLK.Administrator
             this.DGVcost.Name = "DGVcost";
             this.DGVcost.Size = new System.Drawing.Size(726, 317);
             this.DGVcost.TabIndex = 1;
+            this.DGVcost.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVcost_CellContentClick);
             // 
             // Report_Cost
             // 

@@ -58,10 +58,12 @@ namespace KinoLK.Employee
             this.NumericUpDownDrink = new System.Windows.Forms.NumericUpDown();
             this.BtnSaleDrink = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.BtnRemoveTicket = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -71,6 +73,8 @@ namespace KinoLK.Employee
             this.label1 = new System.Windows.Forms.Label();
             this.NumericUpDownTicket = new System.Windows.Forms.NumericUpDown();
             this.BtnSaleTicket = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownFood)).BeginInit();
@@ -376,10 +380,14 @@ namespace KinoLK.Employee
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.BtnRemoveTicket);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboBox2);
@@ -389,16 +397,47 @@ namespace KinoLK.Employee
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.NumericUpDownTicket);
             this.groupBox1.Controls.Add(this.BtnSaleTicket);
-            this.groupBox1.Location = new System.Drawing.Point(144, 48);
+            this.groupBox1.Location = new System.Drawing.Point(144, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(628, 187);
+            this.groupBox1.Size = new System.Drawing.Size(628, 210);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sprzedaj bilet";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(369, 77);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "label12";
+            this.label12.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(428, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "label11";
+            this.label11.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(430, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "label10";
+            this.label10.Visible = false;
             // 
             // BtnRemoveTicket
             // 
-            this.BtnRemoveTicket.Location = new System.Drawing.Point(294, 141);
+            this.BtnRemoveTicket.Location = new System.Drawing.Point(294, 162);
             this.BtnRemoveTicket.Name = "BtnRemoveTicket";
             this.BtnRemoveTicket.Size = new System.Drawing.Size(159, 23);
             this.BtnRemoveTicket.TabIndex = 20;
@@ -412,6 +451,7 @@ namespace KinoLK.Employee
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(189, 20);
             this.dateTimePicker1.TabIndex = 19;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label9
             // 
@@ -421,15 +461,6 @@ namespace KinoLK.Employee
             this.label9.Size = new System.Drawing.Size(76, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "Wybierz dzień:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(334, 73);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Dla pełnoletnich:";
             // 
             // label7
             // 
@@ -456,6 +487,7 @@ namespace KinoLK.Employee
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 14;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -473,6 +505,7 @@ namespace KinoLK.Employee
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -486,7 +519,7 @@ namespace KinoLK.Employee
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 141);
+            this.label1.Location = new System.Drawing.Point(20, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 8;
@@ -494,20 +527,38 @@ namespace KinoLK.Employee
             // 
             // NumericUpDownTicket
             // 
-            this.NumericUpDownTicket.Location = new System.Drawing.Point(111, 141);
+            this.NumericUpDownTicket.Location = new System.Drawing.Point(112, 165);
             this.NumericUpDownTicket.Name = "NumericUpDownTicket";
             this.NumericUpDownTicket.Size = new System.Drawing.Size(120, 20);
             this.NumericUpDownTicket.TabIndex = 9;
             // 
             // BtnSaleTicket
             // 
-            this.BtnSaleTicket.Location = new System.Drawing.Point(459, 141);
+            this.BtnSaleTicket.Location = new System.Drawing.Point(459, 162);
             this.BtnSaleTicket.Name = "BtnSaleTicket";
             this.BtnSaleTicket.Size = new System.Drawing.Size(159, 23);
             this.BtnSaleTicket.TabIndex = 0;
             this.BtnSaleTicket.Text = "Dodaj bilet";
             this.BtnSaleTicket.UseVisualStyleBackColor = true;
             this.BtnSaleTicket.Click += new System.EventHandler(this.BtnSaleTicket_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 141);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Wybierz sale";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(112, 133);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 25;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // Dashboard
             // 
@@ -572,7 +623,6 @@ namespace KinoLK.Employee
         private System.Windows.Forms.Label LabelTicket;
         private System.Windows.Forms.Label LabelFreePopcorn;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -580,5 +630,10 @@ namespace KinoLK.Employee
         private System.Windows.Forms.Button BtnRemoveDrink;
         private System.Windows.Forms.Button BtnRemoveTicket;
         private System.Windows.Forms.Button BtnClear;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label8;
     }
 }

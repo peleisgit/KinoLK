@@ -27,7 +27,12 @@ namespace KinoLK.Administrator
 
         private void Bilans_Load(object sender, EventArgs e)
         {
-            connection.GetDataGridView("SELECT data AS 'Data', saldo AS 'Saldo' FROM mydb.bilans_rachunku;", DGVbilans);
+            connection.GetDataGridView("SELECT data AS 'Data', przychody AS 'Przychody', koszty AS 'Koszty' FROM mydb.bilans_rachunku;", DGVbilans);
+        }
+
+        private void DGVbilans_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

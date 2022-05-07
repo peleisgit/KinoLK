@@ -129,6 +129,7 @@ namespace KinoLK.Employee
             this.DGVlogs.Name = "DGVlogs";
             this.DGVlogs.Size = new System.Drawing.Size(726, 317);
             this.DGVlogs.TabIndex = 28;
+            this.DGVlogs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVlogs_CellContentClick);
             // 
             // label3
             // 

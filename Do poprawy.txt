@@ -1,0 +1,10 @@
+nie działa wybranie daty w raporcie sprzedaży i w bilansie
+
+nie działa dodawanie seansów
+
+można sprzedać więcej niż 50 biletów na film
+
+
+
+
+-------- 
