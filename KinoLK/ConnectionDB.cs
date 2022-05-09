@@ -197,11 +197,11 @@ namespace KinoLK
 
         public void SendIncome(string currentData, int numberTransaction, decimal income = 0, int numberTicketsSold = 0, int numberPopcorns = 0, int numberDrinks = 0)
         {
-            MySqlCommand connectionDendIncome = new MySqlCommand("INSERT INTO `mydb`.`bilans_rachunku` (`data`, `przychody`, `ilosc_sprzedanych_biletow`, `ilosc_transakcji`, `liczba_popcornu`,`liczba_napojow`) VALUES('" + currentData + "', CAST('" + income.ToString().Replace(',','.') + "' as decimal), '" + numberTicketsSold + "', '" + numberTransaction + "', '" + numberPopcorns + "', '" + numberDrinks + "'); ", connectionDB);
+            MySqlCommand connectionSendIncome = new MySqlCommand("INSERT INTO `mydb`.`bilans_rachunku` (`data`, `przychody`, `ilosc_sprzedanych_biletow`, `ilosc_transakcji`, `liczba_popcornu`,`liczba_napojow`) VALUES('" + currentData + "', CAST('" + income.ToString().Replace(',','.') + "' as decimal), '" + numberTicketsSold + "', '" + numberTransaction + "', '" + numberPopcorns + "', '" + numberDrinks + "'); ", connectionDB);
 
 
             OpenConnection();
-            connectionDendIncome.ExecuteNonQuery();
+            connectionSendIncome.ExecuteNonQuery();
             CloseConnection();
         }
 
