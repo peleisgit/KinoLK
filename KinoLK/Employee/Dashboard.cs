@@ -416,5 +416,10 @@ namespace KinoLK.Employee
 
             
         }
+
+        private void NumericUpDownTicket_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace KinoLK.Administrator
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+            connection.GetDataGridView("SELECT data AS 'Data', przychody AS 'Przychody', koszty AS 'Koszty' FROM mydb.bilans_rachunku where data=Convert('" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "',date);", DGVbilans);
         }
 
         private void Bilans_Load(object sender, EventArgs e)

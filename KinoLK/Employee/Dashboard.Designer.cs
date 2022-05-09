@@ -58,6 +58,8 @@ namespace KinoLK.Employee
             this.NumericUpDownDrink = new System.Windows.Forms.NumericUpDown();
             this.BtnSaleDrink = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@ namespace KinoLK.Employee
             this.label1 = new System.Windows.Forms.Label();
             this.NumericUpDownTicket = new System.Windows.Forms.NumericUpDown();
             this.BtnSaleTicket = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownFood)).BeginInit();
@@ -405,6 +405,24 @@ namespace KinoLK.Employee
             this.groupBox1.Text = "Sprzedaj bilet";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(112, 133);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 25;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 141);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Wybierz sale";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -531,6 +549,7 @@ namespace KinoLK.Employee
             this.NumericUpDownTicket.Name = "NumericUpDownTicket";
             this.NumericUpDownTicket.Size = new System.Drawing.Size(120, 20);
             this.NumericUpDownTicket.TabIndex = 9;
+            this.NumericUpDownTicket.ValueChanged += new System.EventHandler(this.NumericUpDownTicket_ValueChanged);
             // 
             // BtnSaleTicket
             // 
@@ -541,24 +560,6 @@ namespace KinoLK.Employee
             this.BtnSaleTicket.Text = "Dodaj bilet";
             this.BtnSaleTicket.UseVisualStyleBackColor = true;
             this.BtnSaleTicket.Click += new System.EventHandler(this.BtnSaleTicket_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 141);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Wybierz sale";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(112, 133);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 25;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // Dashboard
             // 

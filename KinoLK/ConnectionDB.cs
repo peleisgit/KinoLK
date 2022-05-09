@@ -503,9 +503,46 @@ namespace KinoLK
 
         }
 
-     
+
+        public void AddNewSeans(int idMovie, int idHall, string date, string hour)
+        {       
+
+            MySqlCommand connectionAddNewSeans = new MySqlCommand("INSERT INTO `mydb`.`seanse` (`Filmy_idFilmu`, `Sala_idSali`, `data`, `godzina`) VALUES('" + idMovie + "', '" + idHall + "', '" + date + "', '" + hour + "');", connectionDB);
+
+
+            try
+            {
+                if (OpenConnection() == true)
+                {
+                    connectionAddNewSeans.ExecuteNonQuery();
+                    CloseConnection();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+
+        }
+
 
         
+         
+
+
+
+        public void RemoveSeans(int idSeans, int idMovie, int idHall)
+        {
+            MySqlCommand connectionRemoveSeans = new MySqlCommand("DELETE FROM `mydb`.`seanse` WHERE (`idSeansu` ='" + idSeans + "') AND  (`Filmy_idFilmu` ='" + idMovie + "') AND (`Sala_idSali` ='" + idHall + "');", connectionDB);
+
+            if (OpenConnection() == true)
+            {
+                connectionRemoveSeans.ExecuteNonQuery();
+                CloseConnection();
+            }
+        }
+
 
 
 

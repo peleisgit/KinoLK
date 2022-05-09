@@ -24,5 +24,14 @@ namespace KinoLK.Administrator
         {
             connection.GetDataGridView("SELECT data AS 'Data', przychody AS 'Przychody', ilosc_sprzedanych_biletow AS 'Liczba sprzedanych biletów', ilosc_transakcji AS 'Liczba transakcji', liczba_popcornu AS 'Liczba sprzedanego popcornu', liczba_napojow AS 'Liczba sprzedanych napojów' FROM mydb.bilans_rachunku; ", DGVsales);
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+
+            connection.GetDataGridView("SELECT data AS 'Data', przychody AS 'Przychody', ilosc_sprzedanych_biletow AS 'Liczba sprzedanych biletów', ilosc_transakcji AS 'Liczba transakcji', liczba_popcornu AS 'Liczba sprzedanego popcornu', liczba_napojow AS 'Liczba sprzedanych napojów' FROM mydb.bilans_rachunku where data=Convert('" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "',date);", DGVsales);
+
+
+        }
     }
 }
